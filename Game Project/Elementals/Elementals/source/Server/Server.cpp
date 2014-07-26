@@ -581,9 +581,14 @@ void CServer::SendSnapshots()
 		int nMana = m_vPlayers[nIndex]->GetMana();
 		XMFLOAT3 tPosition = m_vPlayers[nIndex]->GetPosition();
 		XMFLOAT3 tForward = m_vPlayers[nIndex]->GetForward();
+		int nH = m_vPlayers[nIndex]->GetHealth();
+		int nM = m_vPlayers[nIndex]->GetMana();
 		m_cConnection.WriteDataToStream((char *)&nIndex, sizeof(unsigned char));
 		m_cConnection.WriteDataToStream((char *)&tPosition, sizeof(XMFLOAT3));
 		m_cConnection.WriteDataToStream((char *)&tForward, sizeof(XMFLOAT3));
+		m_cConnection.WriteDataToStream((char *)&nH, sizeof(int));
+		m_cConnection.WriteDataToStream((char *)&nM, sizeof(int));
+
 	}
 	SendToAll();
 
