@@ -457,7 +457,7 @@ void CGameState::HandleIncomingData(RakNet::Packet * pcIncomingPacket)
 	case ID_SNAPSHOT_PLAYER:
 		{
 			//printf("The snapshot for the players have arrived.\n");
-			int nPlayerDataOffset = 1 + sizeof(XMFLOAT3) * 2;
+			int nPlayerDataOffset = 1 + (sizeof(XMFLOAT3) * 2) + 8;//12;
 			for(unsigned int nIndex = 0; nIndex < pcIncomingPacket->data[1]; nIndex++)
 			{
 				int nInternalOffset = nIndex * nPlayerDataOffset;
@@ -465,18 +465,22 @@ void CGameState::HandleIncomingData(RakNet::Packet * pcIncomingPacket)
 				nInternalOffset++;
 				if(nPlayerIndex != -1 && m_vPlayers[nPlayerIndex] != m_cpPlayer)
 				{
-					int nHealth = *((int *)(pcIncomingPacket->data + 2 + nInternalOffset));
-					nInternalOffset += sizeof(int);
-					int nMana = *((int *)(pcIncomingPacket->data + 2 + nInternalOffset));
-					nInternalOffset += sizeof(int);
 					XMFLOAT3 tNewPosition = *((XMFLOAT3 *)(pcIncomingPacket->data + 2 + nInternalOffset));
 					nInternalOffset += sizeof(XMFLOAT3);
 					XMFLOAT3 tNewForward = *((XMFLOAT3 *)(pcIncomingPacket->data + 2 + nInternalOffset));
 					nInternalOffset += sizeof(XMFLOAT3);
-					m_vPlayers[nPlayerIndex]->SetHealth(nHealth);
-					m_vPlayers[nPlayerIndex]->SetMana(nMana);
+
+					int nHealth = *((int *)(pcIncomingPacket->data + 2 + nInternalOffset));
+					nInternalOffset += sizeof(int);
+					int nMana = *((int *)(pcIncomingPacket->data + 2 + nInternalOffset));
+					nInternalOffset += sizeof(int);
+					//int nKills = *((int*)(pcIncomingPacket->data + 2 + nInternalOffset));
+
 					m_vPlayers[nPlayerIndex]->SetPosition(tNewPosition);
 					m_vPlayers[nPlayerIndex]->SetForward(tNewForward);
+
+					m_vPlayers[nPlayerIndex]->SetHealth(nHealth);
+					m_vPlayers[nPlayerIndex]->SetMana(nMana);
 				}
 				else
 				{

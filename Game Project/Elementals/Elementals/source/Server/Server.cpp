@@ -534,7 +534,7 @@ void CServer::Update(float fDt)
 					}
 					else 
 					{ //Take a preset amount of damage just to prove collision is working over the network.
-						m_vPlayers[nIndex]->TakeDamage(20); 
+						//m_vPlayers[nIndex]->TakeDamage(20); 
 					}
 				}
 			}
@@ -577,17 +577,17 @@ void CServer::SendSnapshots()
 			continue;
 		}
 
-		int nHealth = m_vPlayers[nIndex]->GetHealth();
-		int nMana = m_vPlayers[nIndex]->GetMana();
 		XMFLOAT3 tPosition = m_vPlayers[nIndex]->GetPosition();
 		XMFLOAT3 tForward = m_vPlayers[nIndex]->GetForward();
 		int nH = m_vPlayers[nIndex]->GetHealth();
 		int nM = m_vPlayers[nIndex]->GetMana();
+		//int nK = m_vPlayers[nIndex]->GetKills();
 		m_cConnection.WriteDataToStream((char *)&nIndex, sizeof(unsigned char));
 		m_cConnection.WriteDataToStream((char *)&tPosition, sizeof(XMFLOAT3));
 		m_cConnection.WriteDataToStream((char *)&tForward, sizeof(XMFLOAT3));
 		m_cConnection.WriteDataToStream((char *)&nH, sizeof(int));
 		m_cConnection.WriteDataToStream((char *)&nM, sizeof(int));
+		//m_cConnection.WriteDataToStream((char *)&nK, sizeof(int));
 	}
 	SendToAll();
 
