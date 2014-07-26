@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Document>
+    <Player Health = "100"
+	    Mana = "100"
+	    Damage = "0.66"
+	    SpellCost = "1.33"
+	    MoveSpeed = "1.0"
+	    CastSpeed = "1.0"
+            Element = "0"></Player>
+    <Player Health = "100"
+	    Mana = "133"
+	    Damage = "0.66"
+	    SpellCost = "1.0"
+	    MoveSpeed = "1.0"
+	    CastSpeed = "1.33"
+            Element = "1"></Player>
+    <Player Health = "66"
+	    Mana = "133"
+	    Damage = "1.0"
+	    SpellCost = "1.0"
+	    MoveSpeed = "1.0"
+	    CastSpeed = "1.0"
+            Element = "2"></Player>
+    <Player Health = "133"
+	    Mana = "66"
+	    Damage = "1.0"
+	    SpellCost = "1.0"
+	    MoveSpeed = "1.0"
+	    CastSpeed = "0.66"
+            Element = "3"></Player>
+</Document>

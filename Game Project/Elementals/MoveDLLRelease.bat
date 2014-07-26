@@ -1,0 +1,1 @@
+XCOPY "Third Party\lib\*.dll" Release\ /y /i /f

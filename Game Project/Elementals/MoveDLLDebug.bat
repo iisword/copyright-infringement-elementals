@@ -1,0 +1,1 @@
+XCOPY "Third Party\lib\*.dll" Debug\ /y /i /f

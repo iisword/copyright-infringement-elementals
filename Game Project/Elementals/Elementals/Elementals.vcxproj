@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ServerDebug|Win32">
+      <Configuration>ServerDebug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="ServerRelease|Win32">
+      <Configuration>ServerRelease</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A23F3AE8-44B1-44E4-9658-0850E5800C7E}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>Elementals</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(SolutionDir)Third Party\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Third Party\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <TargetName>$(ProjectName)Server</TargetName>
+    <IncludePath>$(SolutionDir)Third Party\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Third Party\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <IncludePath>$(SolutionDir)Third Party\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Third Party\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+    <TargetName>$(ProjectName)Server</TargetName>
+    <IncludePath>$(SolutionDir)Third Party\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Third Party\lib;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Raknet_debug.lib;ws2_32.lib;fmodex_vc.lib;XINPUT9_1_0.LIB;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd "$(SolutionDir)"
+call "MoveDLLDebug.bat"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;SERVER_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Raknet_debug.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Raknet.lib;ws2_32.lib;fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>cd "$(SolutionDir)"
+call "MoveDLLRelease.bat"</Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;SERVER_BUILD;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Raknet.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="source\Animation\Animation.cpp" />
+    <ClCompile Include="source\Animation\AnimationBlender.cpp" />
+    <ClCompile Include="source\Animation\AnimationInterpolator.cpp" />
+    <ClCompile Include="source\Animation\AnimationManager.cpp" />
+    <ClCompile Include="source\Animation\AnimMesh.cpp" />
+    <ClCompile Include="source\Animation\Mesh.cpp" />
+    <ClCompile Include="source\Audio\AudioManager.cpp" />
+    <ClCompile Include="source\Audio\AudioSource.cpp" />
+    <ClCompile Include="source\Client\Client.cpp" />
+    <ClCompile Include="source\Collision\Collision.cpp" />
+    <ClCompile Include="source\Collision\CollisionDefines.cpp" />
+    <ClCompile Include="source\Input\Input.cpp" />
+    <ClCompile Include="source\Input\XBOXController.cpp" />
+    <ClCompile Include="source\main.cpp" />
+    <ClCompile Include="source\Message\Event.cpp" />
+    <ClCompile Include="source\Message\Message.cpp" />
+    <ClCompile Include="source\Message\EventSystem.cpp" />
+    <ClCompile Include="source\Message\MessageCreatBaseAttack.cpp" />
+    <ClCompile Include="source\Message\MessageDestroyObject.cpp" />
+    <ClCompile Include="source\Message\MessageSystem.cpp" />
+    <ClCompile Include="source\Networking\NetworkConnection.cpp" />
+    <ClCompile Include="source\Object\Map.cpp" />
+    <ClCompile Include="source\Object\Object.cpp" />
+    <ClCompile Include="source\Object\ObjectManager.cpp" />
+    <ClCompile Include="source\Object\Player.cpp" />
+    <ClCompile Include="source\Object\Projectile.cpp" />
+    <ClCompile Include="source\Object\Spell.cpp" />
+    <ClCompile Include="source\Object\SpellEffect.cpp" />
+    <ClCompile Include="source\Renderer\Camera.cpp" />
+    <ClCompile Include="source\Renderer\commonObject.cpp" />
+    <ClCompile Include="source\Renderer\D2Dobjects.cpp" />
+    <ClCompile Include="source\Renderer\D3DAnimObject.cpp" />
+    <ClCompile Include="source\Renderer\D3DObjects.cpp" />
+    <ClCompile Include="source\Renderer\DDSTextureLoader.cpp" />
+    <ClCompile Include="source\Renderer\Effects.cpp" />
+    <ClCompile Include="source\Renderer\Matrix.cpp" />
+    <ClCompile Include="source\Renderer\OBJLoader.cpp" />
+    <ClCompile Include="source\Renderer\PixelShader.cpp" />
+    <ClCompile Include="source\Renderer\Renderer.cpp" />
+    <ClCompile Include="source\Server\DeathmatchServer.cpp" />
+    <ClCompile Include="source\Server\Server.cpp" />
+    <ClCompile Include="source\Server\ServerApplication.cpp" />
+    <ClCompile Include="source\Server\ServerFactory.cpp" />
+    <ClCompile Include="source\State\BaseState.cpp" />
+    <ClCompile Include="source\State\Game.cpp" />
+    <ClCompile Include="source\State\GameState.cpp" />
+    <ClCompile Include="source\State\MainMenu.cpp" />
+    <ClCompile Include="source\State\PauseState.cpp" />
+    <ClCompile Include="source\State\StateMachine.cpp" />
+    <ClCompile Include="source\State\TestArea.cpp" />
+    <ClCompile Include="source\State\WinState.cpp" />
+    <ClCompile Include="source\Text\Chat.cpp" />
+    <ClCompile Include="source\Text\Text.cpp" />
+    <ClCompile Include="source\UI\UserInterface.cpp" />
+    <ClCompile Include="source\Utilities\DebugConsole.cpp" />
+    <ClCompile Include="source\Utilities\Timer.cpp" />
+    <ClCompile Include="source\Utilities\tinystr.cpp" />
+    <ClCompile Include="source\Utilities\tinyxml.cpp" />
+    <ClCompile Include="source\Utilities\tinyxmlerror.cpp" />
+    <ClCompile Include="source\Utilities\tinyxmlparser.cpp" />
+    <ClCompile Include="source\Utilities\Utilities.cpp" />
+    <ClCompile Include="source\Utilities\XTime.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\Animation\Animation.h" />
+    <ClInclude Include="source\Animation\AnimationBlender.h" />
+    <ClInclude Include="source\Animation\AnimationDefines.h" />
+    <ClInclude Include="source\Animation\AnimationInterpolator.h" />
+    <ClInclude Include="source\Animation\AnimationManager.h" />
+    <ClInclude Include="source\Animation\AnimMesh.h" />
+    <ClInclude Include="source\Animation\Mesh.h" />
+    <ClInclude Include="source\Audio\AudioManager.h" />
+    <ClInclude Include="source\Audio\AudioSource.h" />
+    <ClInclude Include="source\CharacterFlyweight.h" />
+    <ClInclude Include="source\Client\Client.h" />
+    <ClInclude Include="source\Collision\Collision.h" />
+    <ClInclude Include="source\Collision\CollisionDefines.h" />
+    <ClInclude Include="source\Input\Input.h" />
+    <ClInclude Include="source\Input\XBOXController.h" />
+    <ClInclude Include="source\Message\Event.h" />
+    <ClInclude Include="source\Message\IMessage.h" />
+    <ClInclude Include="source\Message\Listener.h" />
+    <ClInclude Include="source\Message\Message.h" />
+    <ClInclude Include="source\Message\EventSystem.h" />
+    <ClInclude Include="source\Message\MessageCreateBaseAttack.h" />
+    <ClInclude Include="source\Message\MessageDestroyObject.h" />
+    <ClInclude Include="source\Message\MessageSystem.h" />
+    <ClInclude Include="source\Networking\NetworkConnection.h" />
+    <ClInclude Include="source\Networking\NetworkDefines.h" />
+    <ClInclude Include="source\Networking\NetworkDelegate.h" />
+    <ClInclude Include="source\Object\Map.h" />
+    <ClInclude Include="source\Object\Object.h" />
+    <ClInclude Include="source\Object\ObjectManager.h" />
+    <ClInclude Include="source\Object\Player.h" />
+    <ClInclude Include="source\Object\Projectile.h" />
+    <ClInclude Include="source\Object\Spell.h" />
+    <ClInclude Include="source\Object\SpellEffect.h" />
+    <ClInclude Include="source\Renderer\Camera.h" />
+    <ClInclude Include="source\Renderer\commonObject.h" />
+    <ClInclude Include="source\Renderer\D2Dobjects.h" />
+    <ClInclude Include="source\Renderer\D3DAnimObject.h" />
+    <ClInclude Include="source\Renderer\D3DObjects.h" />
+    <ClInclude Include="source\Renderer\DDSTextureLoader.h" />
+    <ClInclude Include="source\Renderer\Effects.h" />
+    <ClInclude Include="source\Renderer\Matrix.h" />
+    <ClInclude Include="source\Renderer\OBJLoader.h" />
+    <ClInclude Include="source\Renderer\PixelShader.h" />
+    <ClInclude Include="source\Renderer\Renderer.h" />
+    <ClInclude Include="source\Server\DeathmatchServer.h" />
+    <ClInclude Include="source\Server\Server.h" />
+    <ClInclude Include="source\Server\ServerApplication.h" />
+    <ClInclude Include="source\Server\ServerFactory.h" />
+    <ClInclude Include="source\State\BaseState.h" />
+    <ClInclude Include="source\State\Game.h" />
+    <ClInclude Include="source\State\GameState.h" />
+    <ClInclude Include="source\State\MainMenu.h" />
+    <ClInclude Include="source\State\PauseState.h" />
+    <ClInclude Include="source\State\StateMachine.h" />
+    <ClInclude Include="source\State\TestArea.h" />
+    <ClInclude Include="source\State\WinState.h" />
+    <ClInclude Include="source\Text\Chat.h" />
+    <ClInclude Include="source\Text\Text.h" />
+    <ClInclude Include="source\UI\UserInterface.h" />
+    <ClInclude Include="source\Utilities\DebugConsole.h" />
+    <ClInclude Include="source\Utilities\Timer.h" />
+    <ClInclude Include="source\Utilities\tinystr.h" />
+    <ClInclude Include="source\Utilities\tinyxml.h" />
+    <ClInclude Include="source\Utilities\Utilities.h" />
+    <ClInclude Include="source\Utilities\XTime.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\DebugPackageMaker.bat" />
+    <None Include="..\MoveDLLDebug.bat" />
+    <None Include="..\MoveDLLRelease.bat" />
+    <None Include="..\ReleasePackageMaker.bat" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="source\Renderer\AnimVertShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Vertex</ShaderType>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\FlameShaderNEW.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</ExcludedFromBuild>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\LavaPShaderNEW.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+      </ExcludedFromBuild>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Pixel</ShaderType>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">5.0</ShaderModel>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\OBJNoTexPShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Pixel</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source\Renderer\%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">4.1</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.1</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.1</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">4.1</ShaderModel>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\OBJNoTexVShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Vertex</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source\Renderer\%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\OBJPShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Pixel</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source\Renderer\%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\OBJVShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Vertex</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source\Renderer\%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\PShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Pixel</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source\Renderer\%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\VShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Vertex</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source\Renderer\%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename).csh</HeaderFileOutput>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+    </FxCompile>
+    <FxCompile Include="WaterShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">Pixel</ShaderType>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">%(Filename)</VariableName>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <VariableName Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">%(Filename)</VariableName>
+      <HeaderFileOutput Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">source/Renderer/%(Filename).csh</HeaderFileOutput>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4.1</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerDebug|Win32'">4.1</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">4.1</ShaderModel>
+      <ShaderModel Condition="'$(Configuration)|$(Platform)'=='ServerRelease|Win32'">4.1</ShaderModel>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

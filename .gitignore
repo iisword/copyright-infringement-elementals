@@ -1,0 +1,8 @@
+Debug
+DebugPackage
+*.sdf
+Release
+ServerDebug
+ServerRelease
+Snippets
+/Game Project/Elementals/Elementals/source/Renderer/*.csh

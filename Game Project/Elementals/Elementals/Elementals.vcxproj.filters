@@ -1,0 +1,544 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="BAT Files">
+      <UniqueIdentifier>{048e241b-4878-4cb3-af0d-7c0de1ae3ea1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader">
+      <UniqueIdentifier>{cf2c9b07-28ab-4581-9400-d051bf4eb77f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Audio">
+      <UniqueIdentifier>{b0ec8069-c23d-40f5-b8a7-ec7829438c29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Animation">
+      <UniqueIdentifier>{320866bf-89fc-4a0c-a523-1f3d36a3652b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Renderer">
+      <UniqueIdentifier>{371046e8-6b74-4a2e-aac2-5db54592bf35}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Object">
+      <UniqueIdentifier>{45ec0b6a-7995-4eb2-a74b-89c8c56d9fec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Server">
+      <UniqueIdentifier>{6c24f316-f3b5-4822-8000-b9613141d598}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\State">
+      <UniqueIdentifier>{9bc09db8-7306-4f23-8c6e-04a51d9270da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Client">
+      <UniqueIdentifier>{5781b316-a501-4571-bbf1-05c40e51b037}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Chat">
+      <UniqueIdentifier>{23e7b53a-fbb1-42a0-b5f0-6ee72a05ace3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Collision">
+      <UniqueIdentifier>{eebe23f3-8c9d-4a9c-baa2-73ab431450fa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Input">
+      <UniqueIdentifier>{4819b731-b24a-414f-8f5e-0bce4a3fedef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{5613c1c0-21af-4560-b435-f9d3f6c1710b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Animation">
+      <UniqueIdentifier>{0184eb81-2b7c-488e-b3e6-a7565cfb470b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Audio">
+      <UniqueIdentifier>{768ef19e-0ab3-471a-944d-649a6ef43981}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Client">
+      <UniqueIdentifier>{bbb9e586-52d7-4724-8c1c-c606f6c0bf2b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Chat">
+      <UniqueIdentifier>{616ff6e1-bab5-4085-b6e3-fa0a58bdd8ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Collision">
+      <UniqueIdentifier>{c58d5fd8-d602-4379-97cb-f982642487ca}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{1ba9be6b-a08b-47df-8ca6-78623c4ac552}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{f441bc3c-51f2-4eab-b7c8-13838bc723a0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\State">
+      <UniqueIdentifier>{3fbf5485-f6af-439a-98ab-3c606c83a563}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Server">
+      <UniqueIdentifier>{0538e72a-f7f7-4a6f-a268-b7390604b1b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Object">
+      <UniqueIdentifier>{7a223789-f5f4-4cbf-ae09-c254dacff479}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Renderer">
+      <UniqueIdentifier>{a88acf8c-7d41-42e5-b854-82e2b4122b20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities">
+      <UniqueIdentifier>{9164795b-0432-4a80-896b-f8fda9eab499}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities">
+      <UniqueIdentifier>{b86c5bf1-47f6-48eb-8c77-3922527486f5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Message/Event System">
+      <UniqueIdentifier>{aee043d9-0efa-476a-b917-d01ff2cac718}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Message/Event System">
+      <UniqueIdentifier>{ffd0ea3c-e716-4e93-948c-f889833cdd4c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Networking">
+      <UniqueIdentifier>{93a71209-444e-4281-90d8-e048cf757622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Networking">
+      <UniqueIdentifier>{4dddcf54-083c-4c5a-9302-c9ec51e1922f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Utilities\TinyXML">
+      <UniqueIdentifier>{f724da51-110f-46df-908f-46dc59badd05}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Utilities\TinyXML">
+      <UniqueIdentifier>{554d2127-f853-4172-a52c-61d8f3491264}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="source\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Animation\Animation.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Audio\AudioManager.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\Camera.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Text\Chat.cpp">
+      <Filter>Source Files\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Client\Client.cpp">
+      <Filter>Source Files\Client</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Collision\Collision.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\commonObject.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\D2Dobjects.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\D3DObjects.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\DDSTextureLoader.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\DeathmatchServer.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\Effects.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\Input.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Object\Map.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\Matrix.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Object\ObjectManager.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\OBJLoader.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Object\Player.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\Renderer.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\Server.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\ServerFactory.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\StateMachine.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Text\Text.cpp">
+      <Filter>Source Files\Chat</Filter>
+    </ClCompile>
+    <ClCompile Include="source\UI\UserInterface.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Input\XBOXController.cpp">
+      <Filter>Source Files\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\Game.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\BaseState.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\MainMenu.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\Timer.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\Utilities.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\XTime.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Object\Spell.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Object\SpellEffect.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Object\Object.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\DebugConsole.cpp">
+      <Filter>Source Files\Utilities</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Animation\AnimationBlender.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Animation\AnimationInterpolator.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Animation\AnimationManager.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Message\Message.cpp">
+      <Filter>Source Files\Message/Event System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Message\Event.cpp">
+      <Filter>Source Files\Message/Event System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Object\Projectile.cpp">
+      <Filter>Source Files\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\PauseState.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\GameState.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Audio\AudioSource.cpp">
+      <Filter>Source Files\Audio</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Message\EventSystem.cpp">
+      <Filter>Source Files\Message/Event System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Networking\NetworkConnection.cpp">
+      <Filter>Source Files\Networking</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\tinystr.cpp">
+      <Filter>Source Files\Utilities\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\tinyxml.cpp">
+      <Filter>Source Files\Utilities\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\tinyxmlerror.cpp">
+      <Filter>Source Files\Utilities\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Utilities\tinyxmlparser.cpp">
+      <Filter>Source Files\Utilities\TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Animation\Mesh.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Server\ServerApplication.cpp">
+      <Filter>Source Files\Server</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Collision\CollisionDefines.cpp">
+      <Filter>Source Files\Collision</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Message\MessageCreatBaseAttack.cpp">
+      <Filter>Source Files\Message/Event System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Message\MessageSystem.cpp">
+      <Filter>Source Files\Message/Event System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\TestArea.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\PixelShader.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Animation\AnimMesh.cpp">
+      <Filter>Source Files\Animation</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Message\MessageDestroyObject.cpp">
+      <Filter>Source Files\Message/Event System</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Renderer\D3DAnimObject.cpp">
+      <Filter>Source Files\Renderer</Filter>
+    </ClCompile>
+    <ClCompile Include="source\State\WinState.cpp">
+      <Filter>Source Files\State</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="source\CharacterFlyweight.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Audio\AudioManager.h">
+      <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Animation\Animation.h">
+      <Filter>Header Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\Camera.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\commonObject.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\D2Dobjects.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\D3DObjects.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\DDSTextureLoader.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\Effects.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\Matrix.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\OBJLoader.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\Renderer.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\Player.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\ObjectManager.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\Map.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Server\Server.h">
+      <Filter>Header Files\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Server\ServerFactory.h">
+      <Filter>Header Files\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Server\DeathmatchServer.h">
+      <Filter>Header Files\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\StateMachine.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Client\Client.h">
+      <Filter>Header Files\Client</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Text\Text.h">
+      <Filter>Header Files\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Text\Chat.h">
+      <Filter>Header Files\Chat</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Collision\Collision.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Input\Input.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Input\XBOXController.h">
+      <Filter>Header Files\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="source\UI\UserInterface.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\Game.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\MainMenu.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utilities\Timer.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utilities\Utilities.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utilities\XTime.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\Spell.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\SpellEffect.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\Object.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utilities\DebugConsole.h">
+      <Filter>Header Files\Utilities</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Animation\AnimationBlender.h">
+      <Filter>Header Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Animation\AnimationInterpolator.h">
+      <Filter>Header Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Animation\AnimationManager.h">
+      <Filter>Header Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\Listener.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\Message.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\Event.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Collision\CollisionDefines.h">
+      <Filter>Header Files\Collision</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Animation\AnimationDefines.h">
+      <Filter>Header Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Object\Projectile.h">
+      <Filter>Header Files\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\PauseState.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\GameState.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Audio\AudioSource.h">
+      <Filter>Header Files\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\EventSystem.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Networking\NetworkConnection.h">
+      <Filter>Header Files\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Networking\NetworkDelegate.h">
+      <Filter>Header Files\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utilities\tinystr.h">
+      <Filter>Header Files\Utilities\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Utilities\tinyxml.h">
+      <Filter>Header Files\Utilities\TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Animation\Mesh.h">
+      <Filter>Header Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Networking\NetworkDefines.h">
+      <Filter>Header Files\Networking</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Server\ServerApplication.h">
+      <Filter>Header Files\Server</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\IMessage.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\MessageCreateBaseAttack.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\MessageSystem.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\TestArea.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\PixelShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Animation\AnimMesh.h">
+      <Filter>Header Files\Animation</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Message\MessageDestroyObject.h">
+      <Filter>Header Files\Message/Event System</Filter>
+    </ClInclude>
+    <ClInclude Include="source\Renderer\D3DAnimObject.h">
+      <Filter>Header Files\Renderer</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\WinState.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+    <ClInclude Include="source\State\BaseState.h">
+      <Filter>Header Files\State</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\DebugPackageMaker.bat">
+      <Filter>BAT Files</Filter>
+    </None>
+    <None Include="..\ReleasePackageMaker.bat">
+      <Filter>BAT Files</Filter>
+    </None>
+    <None Include="..\MoveDLLDebug.bat">
+      <Filter>BAT Files</Filter>
+    </None>
+    <None Include="..\MoveDLLRelease.bat">
+      <Filter>BAT Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="source\Renderer\OBJNoTexPShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\OBJNoTexVShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\OBJPShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\OBJVShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\PShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\VShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\FlameShaderNEW.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\LavaPShaderNEW.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="WaterShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+    <FxCompile Include="source\Renderer\AnimVertShader.hlsl">
+      <Filter>Shader</Filter>
+    </FxCompile>
+  </ItemGroup>
+</Project>
