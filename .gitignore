@@ -6,3 +6,4 @@ ServerDebug
 ServerRelease
 Snippets
 *.csh
+*.suo
