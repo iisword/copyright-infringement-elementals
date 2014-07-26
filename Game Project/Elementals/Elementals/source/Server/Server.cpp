@@ -588,7 +588,6 @@ void CServer::SendSnapshots()
 		m_cConnection.WriteDataToStream((char *)&tForward, sizeof(XMFLOAT3));
 		m_cConnection.WriteDataToStream((char *)&nH, sizeof(int));
 		m_cConnection.WriteDataToStream((char *)&nM, sizeof(int));
-
 	}
 	SendToAll();
 
