@@ -223,6 +223,11 @@ bool CCollision::SPHEREtoCAPSULE (CSphere* const sphere, CCapsule* const capsule
 	return SPHEREtoSPHERE(&temp, sphere);
 }
 
+bool CCollision::SPHEREtoTRIANGLE(CSphere* const sphere, CTriangle* const Tri)
+{
+	return false;
+}
+
 
 bool CCollision::IntersectRaySphere(const XMFLOAT3 &sa, const XMFLOAT3 &n, const XMFLOAT3 &center, float radius, float &t, XMFLOAT3 &q)
 {

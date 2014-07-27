@@ -41,7 +41,7 @@ public:
 
 	bool SPHEREtoSPHERE (CSphere* const sphere1, CSphere* const sphere2);
 	bool SPHEREtoCAPSULE (CSphere* const sphere, CCapsule* const capsule);
-
+	bool SPHEREtoTRIANGLE(CSphere* const sphere, CTriangle* const Tri);
 	//bool CAPSULEtoCAPSULE (CCapsule* const capsule1, CCapsule* const capsule2);
 
 

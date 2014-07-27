@@ -88,4 +88,21 @@ public:
 
 };
 
+class CTriangle : public CBaseColObj
+{
+private:
+	XMFLOAT3 m_afCorners[3];
+
+public:
+	CTriangle(void);
+	~CTriangle(void);
+
+	void Update(XMFLOAT3 fNPos);
+
+	void SetCorners(XMFLOAT3 fP1, XMFLOAT3 fP2, XMFLOAT3 fP3);
+
+	//Returns an Array. Please be smart about indexing. Its a triangle, how many side do you think it has...
+	XMFLOAT3* GetCorners(void) { return m_afCorners; }
+};
+
 #endif

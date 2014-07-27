@@ -92,3 +92,27 @@ void CCapsule:: Update(XMFLOAT3 fNPos)
 	m_fBottom.x = fNPos.x;
 	m_fBottom.z = fNPos.z;
 }
+
+CTriangle::CTriangle(void)
+{
+	m_afCorners[0] = XMFLOAT3(0.0f, 0.0f, 0.0f);
+	m_afCorners[1] = XMFLOAT3(0.0f, 0.0f, 0.0f);
+	m_afCorners[2] = XMFLOAT3(0.0f, 0.0f, 0.0f);
+}
+
+CTriangle::~CTriangle(void)
+{
+
+}
+
+void CTriangle::Update(XMFLOAT3 fNPos)
+{
+
+}
+
+void CTriangle::SetCorners(XMFLOAT3 fP1, XMFLOAT3 fP2, XMFLOAT3 fP3)
+{
+	m_afCorners[0] = fP1;
+	m_afCorners[1] = fP2;
+	m_afCorners[2] = fP3;
+}
