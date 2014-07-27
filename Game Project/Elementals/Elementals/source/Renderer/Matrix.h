@@ -8,10 +8,10 @@ using namespace DirectX;
 class CMatrix
 {
 	XMFLOAT4X4 m_XMFloat4X4;
-
+	XMFLOAT3 m_fScale;
 public:
 
-	CMatrix(){};
+	CMatrix(){m_fScale = XMFLOAT3(1.0f, 1.0f, 1.0f);};
 	~CMatrix(){};
 
 	void SetPosition(float fx, float fy, float fz);

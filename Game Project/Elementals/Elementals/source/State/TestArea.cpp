@@ -105,6 +105,7 @@ void CTestArea::Init(CRenderer* r, CText* font)
 
 	CObject * cylinder = new CObject;
 	cylinder->SetMesh(m_pRenderer->AddModel(cylinder->GetMesh(), "assets/Cylinder.obj"));
+	cylinder->GetMesh()->GetCMatrix()->Scale(XMFLOAT3(.25f, .25f, .25f));
 	cylinder->SetTexture(new D2DObject(L"assets/noise.dds", 512.0f, 512.0f));
 	cylinder->SetPShader(m_pRenderer->GetPShader("LavaPShaderNEW"));
 	m_pRenderer->AddD2D(cylinder->GetTexture());

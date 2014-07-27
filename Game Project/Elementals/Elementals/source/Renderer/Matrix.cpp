@@ -68,27 +68,30 @@ void CMatrix::TranslateLocal(XMFLOAT3 trans)
 
 void CMatrix::TranslateGlobalX(XMFLOAT3 trans)
 {
-	XMMATRIX temp = XMMatrixTranslation( m_XMFloat4X4._11*trans.x, m_XMFloat4X4._12*trans.x, m_XMFloat4X4._13*trans.x); //trans.x, trans.y, trans.z );
+	XMMATRIX temp = XMMatrixTranslation( m_XMFloat4X4._11*trans.x*m_fScale.x, m_XMFloat4X4._12*trans.x*m_fScale.y, m_XMFloat4X4._13*trans.x*m_fScale.z); //trans.x, trans.y, trans.z );
 	XMMATRIX matCopy = XMLoadFloat4x4(&m_XMFloat4X4);
 	XMStoreFloat4x4(&m_XMFloat4X4, XMMatrixMultiply(matCopy, temp));
 }
 
 void CMatrix::TranslateGlobalZ(XMFLOAT3 trans)
 {
-	XMMATRIX temp = XMMatrixTranslation( m_XMFloat4X4._31*trans.z, m_XMFloat4X4._32*trans.z, m_XMFloat4X4._33*trans.z); //trans.x, trans.y, trans.z );
+	XMMATRIX temp = XMMatrixTranslation( m_XMFloat4X4._31*trans.z*m_fScale.x, m_XMFloat4X4._32*trans.z*m_fScale.y, m_XMFloat4X4._33*trans.z*m_fScale.z); //trans.x, trans.y, trans.z );
 	XMMATRIX matCopy = XMLoadFloat4x4(&m_XMFloat4X4);
 	XMStoreFloat4x4(&m_XMFloat4X4, XMMatrixMultiply(matCopy, temp));
 }
 
 void CMatrix::TranslateGlobalZ(XMFLOAT3 trans, XMFLOAT3 forward)
 {
-	XMMATRIX temp = XMMatrixTranslation( forward.x+trans.x, forward.y+trans.y, forward.z+trans.z); //trans.x, trans.y, trans.z );
+	XMMATRIX temp = XMMatrixTranslation( forward.x+trans.x*m_fScale.x, forward.y+trans.y*m_fScale.y, forward.z+trans.z*m_fScale.z); //trans.x, trans.y, trans.z );
 	XMMATRIX matCopy = XMLoadFloat4x4(&m_XMFloat4X4);
 	XMStoreFloat4x4(&m_XMFloat4X4, XMMatrixMultiply(matCopy, temp));
 }
 
 void CMatrix::Scale(XMFLOAT3 scale)
 {
+	m_fScale.x = m_fScale.x / scale.x;
+	m_fScale.y = m_fScale.y / scale.y;
+	m_fScale.z = m_fScale.z / scale.z;
 	XMMATRIX matScal = XMMatrixScaling(scale.x, scale.y, scale.z);
 	XMMATRIX matTemp =  XMLoadFloat4x4(&m_XMFloat4X4);
 	matScal = XMMatrixMultiply(matScal, matTemp);

@@ -113,6 +113,7 @@ class CRenderer
 	std::vector<CPixelShader> pixelShaders;
 	RENDERTYPE m_eRType;
 
+	unsigned int m_nNumLights;
 	TLIGHT light;
 	ID3D11Buffer * lightBuffer;
 	

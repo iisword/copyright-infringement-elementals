@@ -162,6 +162,7 @@ void CRenderer::Init(HINSTANCE hinst, WNDPROC proc)
 	samplerDesc.BorderColor[3] = 0.0f;
 	hr = m_pd3ddevice->CreateSamplerState(&samplerDesc, &sampler);
 
+	m_nNumLights = 1;
 	light.color = XMFLOAT4(1.0f, 0.0f, 0.0f, 1.0f);
 	light.pos = XMFLOAT3(-1, 1.5, 0);
 	light.intensity = 3.0f;
@@ -525,6 +526,10 @@ void CRenderer::Update(void)
 	m_pd3dcontext->Map(sceneBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &edit);
 	memcpy(edit.pData, &scene, sizeof(TSCENE));
 	m_pd3dcontext->Unmap(sceneBuffer, 0);
+
+	m_pd3dcontext->Map(lightBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &edit);
+	memcpy(edit.pData, &light, sizeof(TLIGHT)*m_nNumLights);
+	m_pd3dcontext->Unmap(lightBuffer, 0);
 
 }
 
