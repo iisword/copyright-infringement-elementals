@@ -18,7 +18,6 @@ CObject::CObject()
 	m_cpMesh = nullptr;
 	m_cpTexture = nullptr;
 	m_cpBounds = nullptr;
-	m_pChildren.push_back(this);
 	m_bColliding = false;
 }
 
@@ -142,8 +141,8 @@ void CObject::SetPosition(XMFLOAT3 & tNewPosition)
 #else
 	m_tPosition = tNewPosition;
 #endif
-	//for(unsigned int i = 0; i < m_pChildren.size(); i++)
-	//	m_pChildren[i]->SetPosition(tNewPosition);
+	for(unsigned int i = 0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->SetPosition(tNewPosition);
 }
 
 void CObject::SetForward(XMFLOAT3 & tNewForward)
@@ -153,8 +152,8 @@ void CObject::SetForward(XMFLOAT3 & tNewForward)
 #else
 	m_tForward = tNewForward;
 #endif
-	//for(unsigned int i = 0; i < m_pChildren.size(); i++)
-	//	m_pChildren[i]->SetForward(tNewForward);
+	for(unsigned int i = 0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->SetForward(tNewForward);
 }
 
 void CObject::SetPShader(ID3D11PixelShader * pShaderIn)
@@ -177,3 +176,96 @@ void CObject::SetBounds(CBaseColObj* nBounds)
 	}
 	m_cpBounds = nBounds; 
 }
+
+void CObject::LocalRotateX(float rot)
+{
+	m_cpMesh->GetCMatrix()->LocalRotateX(rot);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->LocalRotateX(rot);
+}
+
+void CObject::LocalRotateY(float rot)
+{
+	m_cpMesh->GetCMatrix()->LocalRotateY(rot);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->LocalRotateY(rot);
+}
+
+void CObject::LocalRotateZ(float rot)
+{
+	m_cpMesh->GetCMatrix()->LocalRotateZ(rot);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->LocalRotateZ(rot);
+}
+
+void CObject::WorldRotateX(float rot)
+{
+	m_cpMesh->GetCMatrix()->WorldRotateX(rot);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->WorldRotateX(rot);
+}
+
+void CObject::WorldRotateY(float rot)
+{
+	m_cpMesh->GetCMatrix()->WorldRotateY(rot);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->WorldRotateY(rot);
+}
+
+void CObject::WorldRotateZ(float rot)
+{
+	m_cpMesh->GetCMatrix()->WorldRotateZ(rot);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->WorldRotateZ(rot);
+}
+
+void CObject::TranslateLocal(XMFLOAT3 trans)
+{
+	m_cpMesh->GetCMatrix()->TranslateLocal(trans);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->TranslateLocal(trans);
+}
+
+void CObject::TranslateGlobalX(XMFLOAT3 trans)
+{
+	m_cpMesh->GetCMatrix()->TranslateGlobalX(trans);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->TranslateGlobalX(trans);
+}
+
+void CObject::TranslateGlobalZ(XMFLOAT3 trans)
+{
+	m_cpMesh->GetCMatrix()->TranslateGlobalZ(trans);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->TranslateGlobalZ(trans);
+}
+
+void CObject::TranslateGlobalZ(XMFLOAT3 trans, XMFLOAT3 forward)
+{
+	m_cpMesh->GetCMatrix()->TranslateGlobalZ(trans, forward);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->TranslateGlobalZ(trans, forward);
+}
+
+void CObject::Scale(XMFLOAT3 scale)
+{
+	m_cpMesh->GetCMatrix()->Scale(scale);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->Scale(scale);
+}
+
+void CObject::MatMult(XMFLOAT4X4 * matIn)
+{
+	m_cpMesh->GetCMatrix()->MatMult(matIn);
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->MatMult(matIn);
+}
+
+void CObject::MakeIdentity()
+{
+	m_cpMesh->GetCMatrix()->MakeIdentity();
+	for(unsigned int i=0; i < m_pChildren.size(); i++)
+		m_pChildren[i]->MakeIdentity();
+}
+
+

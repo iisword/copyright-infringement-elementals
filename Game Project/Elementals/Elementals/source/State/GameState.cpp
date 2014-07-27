@@ -148,7 +148,7 @@ void CGameState::Init(CRenderer* r, CText* font)
 	m_map = new CMap;
 	m_map->Init();
 	m_map->GetMapObject()->SetMesh(m_pRenderer->AddModel(m_map->GetMapObject()->GetMesh(), "assets/LevelMesh.obj"));
-	m_map->GetMapObject()->GetMesh()->GetCMatrix()->TranslateGlobalX(XMFLOAT3(50, 0, 0));
+	m_map->GetMapObject()->TranslateGlobalX(XMFLOAT3(50, 0, 0));
 	m_pObjectManager->AddEntity(m_map->GetMapObject(), m_map->GetMapObject()->GetID());
 
 	m_pSpells = new D2DObject(L"assets/Hud/Abilities.dds", 512.0f, 128.0f);
@@ -310,25 +310,19 @@ void CGameState::GameInput()
 
 		if(m_pInput->IsKey('W'))
 		{
-			for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-			{
-				m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalZ(XMFLOAT3(0, 0, speed*time));
-			}
+			m_cpPlayer->TranslateGlobalZ(XMFLOAT3(0, 0, speed*time));
 		}
 		if(m_pInput->IsKey('A'))
 		{
-			for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-				m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalX(XMFLOAT3(-speed*time, 0, 0));
+			m_cpPlayer->TranslateGlobalX(XMFLOAT3(-speed*time, 0, 0));
 		}
 		if(m_pInput->IsKey('S'))
 		{
-			for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-				m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalZ(XMFLOAT3(0, 0, -speed*time));
+			m_cpPlayer->TranslateGlobalZ(XMFLOAT3(0, 0, -speed*time));
 		}
 		if(m_pInput->IsKey('D'))
 		{
-			for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-				m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalX(XMFLOAT3(speed*time, 0, 0));
+			m_cpPlayer->TranslateGlobalX(XMFLOAT3(speed*time, 0, 0));
 		}
 		
 		for(int i = 0; i < (int)m_pObjectManager->GetLvlObjs().size(); ++i)
@@ -347,8 +341,7 @@ void CGameState::GameInput()
 		if(m_pInput->GetPrevPos()->x != m_pInput->GetMouseX())
 		{
 			m_cpPlayer->AddRotation(.008f*(m_pInput->GetMouseX()-m_pInput->GetPrevPos()->x));
-			for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-				m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->WorldRotateY(.008f*(m_pInput->GetMouseX()-m_pInput->GetPrevPos()->x));
+			m_cpPlayer->WorldRotateY(.008f*(m_pInput->GetMouseX()-m_pInput->GetPrevPos()->x));
 		}
 		if(m_pInput->GetPrevPos()->y != m_pInput->GetMouseY())
 		{
@@ -944,7 +937,7 @@ void CGameState::CreateProjectile(IMessage * pMsg)
 	pSpell->SetPosition(pCreateMsg->GetPosition());
 	pSpell->SetVelocity(pCreateMsg->GetForward());
 	pSpell->SetLifetime(pCreateMsg->GetLifetime());
-	pSpell->GetMesh()->GetCMatrix()->TranslateLocal(XMFLOAT3(0.0f, 3.0, 0.0f));
+	pSpell->TranslateLocal(XMFLOAT3(0.0f, 3.0, 0.0f));
 	CBaseColObj* tempS = new CSphere();
 	((CSphere*)tempS)->SetPos(pSpell->GetPosition());
 	((CSphere*)tempS)->SetRad(1.0f);

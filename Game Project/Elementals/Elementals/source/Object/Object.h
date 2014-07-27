@@ -75,14 +75,30 @@ public:
 	void SetBounds(CBaseColObj* nBounds);
 
 	void AddChild(CObject * childIn){ m_pChildren.push_back(childIn); };
-	CObject * GetChild(int i){ return m_pChildren[i]; };
-	unsigned int ChildCount(){ return m_pChildren.size(); };
+//	CObject * GetChild(int i){ return m_pChildren[i]; };
+//	unsigned int ChildCount(){ return m_pChildren.size(); };
 
 	bool GetCol(void) { return m_bColliding; }
 	void SetCol(bool c) { m_bColliding = c; }
 
 	void SetPShader(ID3D11PixelShader * pShaderIn);
 	ID3D11PixelShader * GetShaders();
+
+	//MATRIX FUNCTIONALITY SO AN OBJECT CAN CONTROL ITS CHILDREN
+	void LocalRotateX(float rot);
+	void LocalRotateY(float rot);
+	void LocalRotateZ(float rot);
+	void WorldRotateX(float rot);
+	void WorldRotateY(float rot);
+	void WorldRotateZ(float rot);
+	void TranslateLocal(XMFLOAT3 trans);
+	void TranslateGlobalX(XMFLOAT3 trans);
+	void TranslateGlobalZ(XMFLOAT3 trans);
+	void TranslateGlobalZ(XMFLOAT3 trans, XMFLOAT3 forward);
+	void Scale(XMFLOAT3 scale);
+	void MatMult(XMFLOAT4X4 * matIn);
+	void MakeIdentity();
+
 
 };
 

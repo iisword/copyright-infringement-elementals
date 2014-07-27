@@ -224,12 +224,12 @@ void CAnimationInterpolator::DebugProcess(CMatrix mat)
 
 
 		 
-		 		XMMATRIX matScal = XMLoadFloat4x4(m_vBones[i]->GetMesh()->GetCMatrix()->GetMatrix());
+		 		XMMATRIX matScal = XMLoadFloat4x4(m_vBones[i]->GetMesh()->GetMatrix());
 		 		XMMATRIX matTemp =  XMLoadFloat4x4(&temp);
 		 		matScal = XMMatrixMultiply(matScal, matTemp);
 		 		XMStoreFloat4x4(&(*m_vBones[i]->GetMesh()->GetCMatrix()->GetMatrix()), matScal);
 		 
-		 		m_vBones[i]->GetMesh()->GetCMatrix()->Scale(XMFLOAT3(0.25f,0.25f,0.25f));
+		 		m_vBones[i]->Scale(XMFLOAT3(0.25f,0.25f,0.25f));
 
 	}
 	return;

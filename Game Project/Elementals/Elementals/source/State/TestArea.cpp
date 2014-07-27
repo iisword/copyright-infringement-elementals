@@ -90,7 +90,7 @@ void CTestArea::Init(CRenderer* r, CText* font)
 	m_map = new CMap;
 	m_map->Init();
 	m_map->GetMapObject()->SetMesh(m_pRenderer->AddModel(m_map->GetMapObject()->GetMesh(), "assets/LevelMesh.obj"));
-	m_map->GetMapObject()->GetMesh()->GetCMatrix()->TranslateGlobalX(XMFLOAT3(50, 0, 0));
+	m_map->GetMapObject()->TranslateGlobalX(XMFLOAT3(50, 0, 0));
 	m_pObjectManager->AddEntity(m_map->GetMapObject(), m_map->GetMapObject()->GetID());
 
 	//BULLSHIT TEST CODE - DELETE
@@ -105,7 +105,7 @@ void CTestArea::Init(CRenderer* r, CText* font)
 
 	CObject * cylinder = new CObject;
 	cylinder->SetMesh(m_pRenderer->AddModel(cylinder->GetMesh(), "assets/Cylinder.obj"));
-	cylinder->GetMesh()->GetCMatrix()->Scale(XMFLOAT3(.25f, .25f, .25f));
+	cylinder->Scale(XMFLOAT3(.25f, .25f, .25f));
 	cylinder->SetTexture(new D2DObject(L"assets/noise.dds", 512.0f, 512.0f));
 	cylinder->SetPShader(m_pRenderer->GetPShader("LavaPShaderNEW"));
 	m_pRenderer->AddD2D(cylinder->GetTexture());
@@ -186,8 +186,7 @@ void CTestArea::TestInput(void)
 
 	if(m_pInput->IsKey('W'))
 	{
-		for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-			m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalZ(XMFLOAT3(0, 0, speed*time));
+		m_cpPlayer->TranslateGlobalZ(XMFLOAT3(0, 0, speed*time));
 		//m_AnimMatrix.TranslateGlobalZ(XMFLOAT3(0,0,speed*time));
 		//TestAnim->GetCMatrix()->TranslateGlobalZ(XMFLOAT3(0,0,speed*time));
 		//_DEBUG_INTERPOLATOR->GoToNextKeyFrame();
@@ -208,8 +207,7 @@ void CTestArea::TestInput(void)
 	}
 	if(m_pInput->IsKey('A'))
 	{
-		for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-			m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalX(XMFLOAT3(-speed*time, 0, 0));
+		m_cpPlayer->TranslateGlobalX(XMFLOAT3(-speed*time, 0, 0));
 		//m_AnimMatrix.TranslateGlobalX(XMFLOAT3(-speed*time, 0, 0));
 //		_DEBUG_INTERPOLATOR->Process(m_AnimMatrix);
 //		m_AnimMatrix.TranslateGlobalX(XMFLOAT3(-speed*time, 0, 0));
@@ -221,8 +219,7 @@ void CTestArea::TestInput(void)
 	}
 	if(m_pInput->IsKey('S'))
 	{
-		for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-			m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalZ(XMFLOAT3(0, 0, -speed*time));
+		m_cpPlayer->TranslateGlobalZ(XMFLOAT3(0, 0, -speed*time));
 		//m_AnimMatrix.TranslateGlobalZ(XMFLOAT3(0,0,-speed*time));
 		//_DEBUG_INTERPOLATOR->GoToPrevKeyFrame();
 		//_DEBUG_INTERPOLATOR->AddTime(-time);
@@ -242,8 +239,7 @@ void CTestArea::TestInput(void)
 	}
 	if(m_pInput->IsKey('D'))
 	{
-		for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-			m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->TranslateGlobalX(XMFLOAT3(speed*time, 0, 0));
+		m_cpPlayer->TranslateGlobalX(XMFLOAT3(speed*time, 0, 0));
 		//m_AnimMatrix.TranslateGlobalX(XMFLOAT3(speed*time, 0, 0));
 		//_DEBUG_INTERPOLATOR->Process(m_AnimMatrix);
 		//m_AnimMatrix.TranslateGlobalX(XMFLOAT3(speed*time, 0, 0));
@@ -256,8 +252,7 @@ void CTestArea::TestInput(void)
 	if(m_pInput->GetPrevPos()->x != m_pInput->GetMouseX())
 	{
 		m_cpPlayer->AddRotation(.008f*(m_pInput->GetMouseX()-m_pInput->GetPrevPos()->x));
-		for(unsigned int i = 0; i < m_cpPlayer->ChildCount(); i++)
-			m_cpPlayer->GetChild(i)->GetMesh()->GetCMatrix()->WorldRotateY(.008f*(m_pInput->GetMouseX()-m_pInput->GetPrevPos()->x));
+		m_cpPlayer->WorldRotateY(.008f*(m_pInput->GetMouseX()-m_pInput->GetPrevPos()->x));
 #if _DEBUG		
 		//m_AnimMatrix.WorldRotateY(.008f*(m_pInput->GetMouseX()-m_pInput->GetPrevPos()->x));
 		//_DEBUG_INTERPOLATOR->Process(m_AnimMatrix);

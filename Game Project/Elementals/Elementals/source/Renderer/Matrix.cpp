@@ -107,12 +107,7 @@ void CMatrix::SetPosition(float fx, float fy, float fz)
 
 void CMatrix::SetPosition(XMFLOAT3 tNewPosition)
 {
-	memcpy(&m_XMFloat4X4.m[3], &tNewPosition, sizeof(XMFLOAT3));
-}
-
-void CMatrix::SetForward(float fx, float fy, float fz)
-{
-	SetForward(XMFLOAT3(fx, fy, fz));
+	memcpy(&m_XMFloat4X4._41, &tNewPosition, sizeof(XMFLOAT3));
 }
 
 void CMatrix::SetForward(XMFLOAT3 tNewForward)
