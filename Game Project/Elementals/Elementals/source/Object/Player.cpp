@@ -16,6 +16,7 @@ CPlayer::CPlayer(const TCharacterBaseStats * tStats) : m_chPlayerMode(PLAYERMODE
 	m_fHealthRegenTimer = 0.0f;
 	m_nMana = 100;
 	m_nMaxMana = 100;
+	m_fRespawnTimer = 0.0f;
 	//GetMesh()->SetMatrixToIdentity();
 }
 
@@ -88,6 +89,11 @@ void CPlayer::Update(float fDT)
 	else
 	{
 		m_fCastTimer += fDT;
+		
+
+#ifndef SERVER_BUILD
+		m_cSpell->Update(fDT);
+#else
 		m_fManaRegenTimer += fDT;
 		m_fHealthRegenTimer += fDT;
 
@@ -102,9 +108,6 @@ void CPlayer::Update(float fDT)
 			SetHealth(m_nHealth + 1);
 			m_fHealthRegenTimer = 0.0f;
 		}
-
-#ifndef SERVER_BUILD
-		m_cSpell->Update(fDT);
 #endif
 		if(GetBounds() != nullptr)
 		{
@@ -133,6 +136,7 @@ void CPlayer::CastSpell()
 		}
 #else
 		m_fCastTimer = 0.0f;
+		m_fManaRegenTimer = 0.0f;
 #endif
 	}
 	else
@@ -152,10 +156,25 @@ bool CPlayer::CanFire(unsigned char chType) const
 	{
 		if(m_nHealth != 0)
 		{
-			return m_tpStats->m_fCastSpeed <= m_fCastTimer;
+			if(m_nMana > m_tpStats->m_tSpellStats[chType].m_nManaCost)
+			{
+				return m_tpStats->m_fCastSpeed <= m_fCastTimer;
+			}
 		}
 	}
 	return false;
+}
+
+void CPlayer::DecreaseManaBasedOnSpell(unsigned char chType)
+{
+	if(m_tpStats)
+	{
+		m_nMana -= m_tpStats->m_tSpellStats[chType].m_nManaCost;
+		if(m_nMana < 0)
+		{
+			m_nMana = 0;
+		}
+	}
 }
 #pragma endregion
 
@@ -285,9 +304,13 @@ void CPlayer::SetMana(int nMana)
 {
 	m_nMana = nMana;
 
-	if(m_nMana > m_nMaxMana)
+	if(m_nMana > m_tpStats->m_nStartMana)
 	{
-		m_nMana = m_nMaxMana;
+		m_nMana = m_tpStats->m_nStartMana;
+	}
+	else if(m_nMana < 0)
+	{
+		m_nMana = 0;
 	}
 }
 
@@ -305,15 +328,28 @@ void CPlayer::SetHealth(int nHealth)
 {
 	m_nHealth = nHealth;
 
-	if(m_nHealth > m_nMaxHealth)
+	if(m_nHealth > m_tpStats->m_nStartHealth)
 	{
-		m_nHealth = m_nMaxHealth;
+		m_nHealth = m_tpStats->m_nStartHealth;
+	}
+	else if(m_nHealth < 0)
+	{
+		m_nHealth = 0;
 	}
 }
 
 void CPlayer::TakeDamage(int nDmg)
 {
+	m_fHealthRegenTimer = 0.0f;
 	m_nHealth -= nDmg;
+	if(m_nHealth < 0)
+	{
+		m_nHealth = 0;
+	}
+	else if(m_nHealth > m_tpStats->m_nStartHealth)
+	{
+		m_nHealth = m_tpStats->m_nStartHealth;
+	}
 }
 
 void CPlayer::SetRespawnTimer(float fTime)

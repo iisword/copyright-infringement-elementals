@@ -219,10 +219,6 @@ void CGameState::Update(float dTime)
 				}
 				GameInput();
 				m_pMessageSystem->ProcessMessages();
-				if(m_cpPlayer->GetHealth() <= 0)
-				{
-					//m_fSpawnTimer = 5.0f;
-				}
 			}
 			else if(m_pPause != nullptr)
 			{
@@ -463,21 +459,30 @@ void CGameState::HandleIncomingData(RakNet::Packet * pcIncomingPacket)
 				int nInternalOffset = nIndex * nPlayerDataOffset;
 				int nPlayerIndex = FindPlayer(pcIncomingPacket->data[2 + nInternalOffset]);
 				nInternalOffset++;
-				if(nPlayerIndex != -1 && m_vPlayers[nPlayerIndex] != m_cpPlayer)
+				if(nPlayerIndex != -1)
 				{
-					XMFLOAT3 tNewPosition = *((XMFLOAT3 *)(pcIncomingPacket->data + 2 + nInternalOffset));
-					nInternalOffset += sizeof(XMFLOAT3);
-					XMFLOAT3 tNewForward = *((XMFLOAT3 *)(pcIncomingPacket->data + 2 + nInternalOffset));
-					nInternalOffset += sizeof(XMFLOAT3);
+					if(m_vPlayers[nPlayerIndex] != m_cpPlayer)
+					{
+						//Update the position of the players
+						XMFLOAT3 tNewPosition = *((XMFLOAT3 *)(pcIncomingPacket->data + 2 + nInternalOffset));
+						nInternalOffset += sizeof(XMFLOAT3);
+						XMFLOAT3 tNewForward = *((XMFLOAT3 *)(pcIncomingPacket->data + 2 + nInternalOffset));
+						nInternalOffset += sizeof(XMFLOAT3);
+						m_vPlayers[nPlayerIndex]->SetPosition(tNewPosition);
+						m_vPlayers[nPlayerIndex]->SetForward(tNewForward);
+					}
+					else
+					{
+						nInternalOffset += sizeof(XMFLOAT3) * 2;
+					}
+					
 
 					int nHealth = *((int *)(pcIncomingPacket->data + 2 + nInternalOffset));
 					nInternalOffset += sizeof(int);
 					int nMana = *((int *)(pcIncomingPacket->data + 2 + nInternalOffset));
 					nInternalOffset += sizeof(int);
 					//int nKills = *((int*)(pcIncomingPacket->data + 2 + nInternalOffset));
-
-					m_vPlayers[nPlayerIndex]->SetPosition(tNewPosition);
-					m_vPlayers[nPlayerIndex]->SetForward(tNewForward);
+					
 
 					m_vPlayers[nPlayerIndex]->SetHealth(nHealth);
 					m_vPlayers[nPlayerIndex]->SetMana(nMana);
@@ -875,7 +880,7 @@ void CGameState::RenderPlayerHud()
 
 	float healthBarLength = 334.0f / 2.0f;
 	float healthBarHeight = 20.0f / 2.0f;
-	float healthRatio = (float)m_cpPlayer->GetHealth() / 100.0f;
+	float healthRatio = (float)m_cpPlayer->GetHealth() / (float)m_cpPlayer->GetMaxHealth();
 	float healthLeft = middle + 35.0f - (healthBarLength / 2.0f);
 	m_pRenderer->Render2D(m_pHealth, XMFLOAT4(healthLeft,
 		                                      bottom - 123.0f - healthBarHeight,
@@ -885,7 +890,7 @@ void CGameState::RenderPlayerHud()
 	
 	float manaBarLength = 339.0f / 2.0f;
 	float manaBarHeight = 20.0f / 2.0f;	
-	float manaRatio = (float)m_cpPlayer->GetMana() / 100.0f;
+	float manaRatio = (float)m_cpPlayer->GetMana() / (float)m_cpPlayer->GetMaxMana();
 	float manaLeft = middle + 33.0f - (manaBarLength / 2.0f);
 	m_pRenderer->Render2D(m_pMana, XMFLOAT4(manaLeft,
 		                                    bottom - 92.0f - manaBarHeight,

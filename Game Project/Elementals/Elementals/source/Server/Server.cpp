@@ -359,7 +359,7 @@ void CServer::HandleIncomingData(RakNet::Packet * pcIncomingPacket)
 				unsigned char chType = pcIncomingPacket->data[2];
 				if(m_vPlayers[pcIncomingPacket->data[1]]->CanFire(chType))
 				{
-					
+					m_vPlayers[pcIncomingPacket->data[1]]->DecreaseManaBasedOnSpell(chType);
 					m_vPlayers[pcIncomingPacket->data[1]]->CastSpell();
 					XMFLOAT3 * ptPosition = (XMFLOAT3 *)(pcIncomingPacket->data + 3);
 					XMFLOAT3 * ptForward = (XMFLOAT3 *)(pcIncomingPacket->data + 3 + sizeof(XMFLOAT3));
@@ -419,6 +419,9 @@ bool CServer::Initialize()
 	
 	//TODO: Get Pickups from Map
 	
+	//Misc
+	m_fSpawnTime = DEFAULT_SPAWN_TIME;
+
 	return true;
 }
 
@@ -441,14 +444,30 @@ void CServer::Update(float fDt)
 	}
 	
 	//player update
-	for(unsigned int nIndex = 0; nIndex < m_nMaxClients; nIndex++)
+	for(unsigned char nIndex = 0; nIndex < m_nMaxClients; nIndex++)
 	{
-		if(m_vPlayers[nIndex] == nullptr)
+		if(m_vPlayers[nIndex] == nullptr || m_vPlayers[nIndex]->GetPlayerMode() == PLAYERMODE_SPECTATOR)
 		{
 			continue;
 		}
 
 		m_vPlayers[nIndex]->Update(fDt);
+		if(m_vPlayers[nIndex]->GetHealth() == 0 && m_vPlayers[nIndex]->GetRespawnTime() >= m_fSpawnTime)
+		{
+			//TODO: Spawn the player somewhere
+			XMFLOAT4 tPosition(0.0f, 0.0f, 0.0f, 1.0f);
+			XMFLOAT3 tForward(0.0f, 0.0f, 1.0f);
+			
+			m_vPlayers[nIndex]->Spawn(tPosition);
+			m_vPlayers[nIndex]->SetForward(tForward);
+
+			MessageID nMessageType = ID_PLAYER_SPAWN;
+			m_cConnection.WriteDataToStream((char *)&nMessageType, sizeof(MessageID));
+			m_cConnection.WriteDataToStream((char *)&nIndex, sizeof(unsigned char));
+			m_cConnection.WriteDataToStream((char *)&tPosition, sizeof(XMFLOAT3));
+			m_cConnection.WriteDataToStream((char *)&tForward, sizeof(XMFLOAT3));
+			SendToAll();
+		}
 	}
 
 	//TODO: Update Pickups
@@ -482,6 +501,12 @@ void CServer::Update(float fDt)
 
 			for(int nJ = (int)m_vSpells.size() - 1; nJ >= 0;  --nJ)
 			{
+				if(m_vSpells[nJ]->GetOwner() == nullptr)
+				{
+					delete m_vSpells[nJ];
+					m_vSpells.erase(m_vSpells.begin() + nJ);
+					continue;
+				}
 				if(m_vSpells[nJ]->GetBounds() != nullptr)
 				{ 
 					m_vSpells[nJ]->GetBounds()->Update(m_vSpells[nJ]->GetPosition()); 
@@ -517,8 +542,8 @@ void CServer::Update(float fDt)
 							MessageID nMessageType = ID_COLLISION;
 							unsigned char chColType = COLLISION_PLAYER_TO_SPELL;
 							unsigned char chPlayerID = m_vPlayers[nIndex]->GetGameID();
-							unsigned char chSpellID = m_vSpells[nIndex]->GetGameID();
-							XMFLOAT3 tSpellLocation = m_vSpells[nIndex]->GetPosition();
+							unsigned char chSpellID = m_vSpells[nJ]->GetGameID();
+							XMFLOAT3 tSpellLocation = m_vSpells[nJ]->GetPosition();
 							m_cConnection.WriteDataToStream((char *)&nMessageType, sizeof(MessageID));
 							m_cConnection.WriteDataToStream((char *)&chColType, sizeof(unsigned char));
 							m_cConnection.WriteDataToStream((char *)&chPlayerID, sizeof(unsigned char));

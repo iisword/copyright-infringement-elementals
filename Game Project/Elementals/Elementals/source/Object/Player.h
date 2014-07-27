@@ -156,6 +156,19 @@ public:
 	*	Mod. Initials:		MB
 	**********************************/
 	bool CanFire(unsigned char chType) const;
+
+	/**********************************
+	*	DecreaseManaBasedOnSpell:		Decreases mana based on the spell-type passed. Won't
+	*									do anything if the stats aren't set.
+	*
+	*	In:								unsigned char chType - The type of spell
+	*
+	*	Return:							
+	*
+	*	Mod. Date:						7/26/2014
+	*	Mod. Initials:					MB
+	**********************************/
+	void DecreaseManaBasedOnSpell(unsigned char chType);
 #pragma endregion
 
 #pragma region Network Functions

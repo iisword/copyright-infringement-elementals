@@ -5,7 +5,7 @@
 #include "../Message/MessageSystem.h"
 #include "../Message/MessageDestroyObject.h"
 
-CProjectile::CProjectile() : m_pcOwner(nullptr), m_ptStats(nullptr)
+CProjectile::CProjectile() : m_pcOwner(nullptr), m_ptStats(nullptr), m_chType(0)
 {
 	SetID(PROJECTILE);
 	m_fCurrLifetime = 0.0f;
@@ -13,7 +13,10 @@ CProjectile::CProjectile() : m_pcOwner(nullptr), m_ptStats(nullptr)
 
 CProjectile::~CProjectile()
 {
-
+	if(m_pcOwner)
+	{
+		m_pcOwner->Release();
+	}
 }
 
 void CProjectile::Update(float fDT)
@@ -130,6 +133,11 @@ unsigned char CProjectile::GetType() const
 	return m_chType;
 }
 
+const TSpellStats * CProjectile::GetStats() const
+{
+	return m_ptStats;
+}
+
 void CProjectile::SetVelocity(XMFLOAT3 fVelocity)
 {
 	m_fVelocity = fVelocity;
@@ -160,7 +168,6 @@ void CProjectile::SetOwner(CPlayer * pcOwner)
 	if(m_pcOwner)
 	{
 		m_pcOwner->Release();
-		m_ptStats = nullptr;
 	}
 
 	m_pcOwner = pcOwner;
@@ -178,4 +185,9 @@ void CProjectile::SetOwner(CPlayer * pcOwner)
 void CProjectile::SetType(unsigned char chType)
 {
 	m_chType = chType;
+}
+
+void CProjectile::SetStats(const TSpellStats * pcStats)
+{
+	m_ptStats = pcStats;
 }

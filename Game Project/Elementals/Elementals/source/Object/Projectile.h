@@ -64,6 +64,7 @@ public:
 	unsigned char GetGameID() const;
 	CPlayer * GetOwner() const;
 	unsigned char GetType() const;
+	const TSpellStats * GetStats() const;
 
 	void SetVelocity(XMFLOAT3 fVelocity);
 	void SetElement(int nElement);
@@ -72,6 +73,7 @@ public:
 	void SetGameID(unsigned char m_chGameID);
 	void SetOwner(CPlayer * pcOwner);
 	void SetType(unsigned char chType);
+	void SetStats(const TSpellStats * ptStats);
 };
 
 #endif
