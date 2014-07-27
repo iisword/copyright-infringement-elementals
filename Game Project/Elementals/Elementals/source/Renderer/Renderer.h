@@ -106,7 +106,7 @@ class CRenderer
 
 	ID3D11Texture2D * RTTexture;
 	ID3D11RenderTargetView * renderTargetTexture;
-	D2Dobject * renderTargetD2D;
+	D2DObject * renderTargetD2D;
 	ID3D11ShaderResourceView * RTTshaderSRV;
 	unsigned int renderTextureInt, screenWidth, screenHeight;
 
@@ -117,19 +117,20 @@ class CRenderer
 	ID3D11Buffer * lightBuffer;
 	
 	void AnimationInit();
-	D2Dobject* BullshiTexture;
+	D2DObject* BullshiTexture;
 public:
 	
 	ID3D11Device* GetDevice() {return m_pd3ddevice;}
 	void Init(HINSTANCE hinst, WNDPROC proc);
+	void Update(void);
 	void PreRender();
 	void PostRender();
-	void Render2D(D2Dobject * texture, XMFLOAT4 imgCoords, XMFLOAT4 imgPart);
-	void Render3D(D3DObject * mesh, D2Dobject * texture, XMFLOAT4 color);
+	void Render2D(D2DObject * texture, XMFLOAT4 imgCoords, XMFLOAT4 imgPart);
+	void Render3D(D3DObject * mesh, D2DObject * texture, XMFLOAT4 color);
 	bool ShutDown();
 	D3DObject * AddModel(D3DObject * d3dobject, const char * OBJFileLoc);
-	D2Dobject * AddTexture(ID3D11Texture2D * texture, float imgWidth, float imgHeight);
-	void AddD2D(D2Dobject * texture);
+	D2DObject * AddTexture(ID3D11Texture2D * texture, float imgWidth, float imgHeight);
+	void AddD2D(D2DObject * texture);
 	void MoveCamera(XMFLOAT4X4 * camMatrix){ scene.viewMatrix = *camMatrix; };
 	XMFLOAT4X4 GetCamera(){ return scene.viewMatrix; };
 	unsigned int GetWindowWidth(){ return screenWidth; };
@@ -137,6 +138,6 @@ public:
 
 	ID3D11PixelShader * GetPShader(string name);
 
-	void RenderAnim3D(D3DAnimObject * mesh, D2Dobject * texture, XMFLOAT4 color);
+	void RenderAnim3D(D3DAnimObject * mesh, D2DObject * texture, XMFLOAT4 color);
 };
 

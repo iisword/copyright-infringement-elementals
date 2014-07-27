@@ -258,14 +258,14 @@ void CRenderer::Init(HINSTANCE hinst, WNDPROC proc)
 /*///
 A copy paste of the AddTexture func.  Made it overloaded.
 */
-D2Dobject * CRenderer::AddTexture(ID3D11Texture2D * texture, float imgWidth, float imgHeight)
+D2DObject * CRenderer::AddTexture(ID3D11Texture2D * texture, float imgWidth, float imgHeight)
 {
-	D2Dobject * testObj = new D2Dobject(texture, imgWidth, imgHeight);
+	D2DObject * testObj = new D2DObject(texture, imgWidth, imgHeight);
 	AddD2D(testObj);
 	return testObj;
 }
 
-void CRenderer::AddD2D(D2Dobject * testObj)
+void CRenderer::AddD2D(D2DObject * testObj)
 {
 	D3D11_SUBRESOURCE_DATA pData;
 	pData.pSysMem = testObj->GetQuadLoc();
@@ -341,7 +341,7 @@ void CRenderer::PreRender()
  * Mod. Date:		      06/09/2014
  * Mod. Initials:	      BGM
  *****************************************************************/
-void CRenderer::Render2D(D2Dobject * texture, XMFLOAT4 imgCoords, XMFLOAT4 imgPart)
+void CRenderer::Render2D(D2DObject * texture, XMFLOAT4 imgCoords, XMFLOAT4 imgPart)
 {
 		texture->ChangeCoords(imgCoords, imgPart);
 		D3D11_MAPPED_SUBRESOURCE edit;
@@ -384,18 +384,8 @@ void CRenderer::Render2D(D2Dobject * texture, XMFLOAT4 imgCoords, XMFLOAT4 imgPa
  * Mod. Date:		      06/09/2014
  * Mod. Initials:	      BGM
  *****************************************************************/
-void CRenderer::Render3D(D3DObject * mesh, D2Dobject * texture, XMFLOAT4 color)
+void CRenderer::Render3D(D3DObject * mesh, D2DObject * texture, XMFLOAT4 color)
 {
-	/////////// Updating delta time
-	xtime.Signal();
-	variant.x += (float)xtime.Delta()*.1f;
-	variant.y += (float)xtime.Delta()/1.0f;
-	variant.z += (float)xtime.Delta()/1.0f;
-	D3D11_MAPPED_SUBRESOURCE variantEdit;
-	m_pd3dcontext->Map(variantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &variantEdit);
-	memcpy(variantEdit.pData, &variant, sizeof(XMFLOAT4));
-	m_pd3dcontext->Unmap(variantBuffer, 0);
-	///////////////////////////////////
 
 	unsigned int offsetT = 0;
 	unsigned int sizeT = sizeof(commonObject);
@@ -405,10 +395,6 @@ void CRenderer::Render3D(D3DObject * mesh, D2Dobject * texture, XMFLOAT4 color)
 	m_pd3dcontext->Map(objectBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &edit);
 	memcpy(edit.pData, &object.worldMatrix, sizeof(TOBJECT));
 	m_pd3dcontext->Unmap(objectBuffer, 0);
-
-	m_pd3dcontext->Map(sceneBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &edit);
-	memcpy(edit.pData, &scene, sizeof(TSCENE));
-	m_pd3dcontext->Unmap(sceneBuffer, 0);
 
 	ID3D11Buffer * buffers[] = {objectBuffer,  sceneBuffer, colorBuffer};
 
@@ -522,6 +508,26 @@ ID3D11PixelShader * CRenderer::GetPShader(string name)
 	return nullptr;
 }
 
+void CRenderer::Update(void)
+{
+	/////////// Updating delta time
+	xtime.Signal();
+	variant.x += (float)xtime.Delta()*.1f;
+	variant.y += (float)xtime.Delta()/1.0f;
+	variant.z += (float)xtime.Delta()/1.0f;
+	D3D11_MAPPED_SUBRESOURCE edit;
+	m_pd3dcontext->Map(variantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &edit);
+	memcpy(edit.pData, &variant, sizeof(XMFLOAT4));
+	m_pd3dcontext->Unmap(variantBuffer, 0);
+	///////////////////////////////////
+	
+	// Map Unmap camera view and projection matrices as well as dimensions of the screen
+	m_pd3dcontext->Map(sceneBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &edit);
+	memcpy(edit.pData, &scene, sizeof(TSCENE));
+	m_pd3dcontext->Unmap(sceneBuffer, 0);
+
+}
+
 /*****************************************************************
  * AnimationInit():  Private func called from Init() for Romans Animations Initializations
  *
@@ -533,7 +539,7 @@ ID3D11PixelShader * CRenderer::GetPShader(string name)
 void CRenderer::AnimationInit()
 {
 
-	BullshiTexture = new D2Dobject(L"assets/TestCube.dds",1024.0f,1024.0f);
+	BullshiTexture = new D2DObject(L"assets/TestCube.dds",1024.0f,1024.0f);
 	this->AddD2D(BullshiTexture);
 
 
@@ -566,23 +572,12 @@ void CRenderer::AnimationInit()
  * Mod. Date:		      07/22/2014
  * Mod. Initials:	      RT
  *****************************************************************/
-void CRenderer::RenderAnim3D(D3DAnimObject * AnimObject, D2Dobject * texture, XMFLOAT4 color)
+void CRenderer::RenderAnim3D(D3DAnimObject * AnimObject, D2DObject * texture, XMFLOAT4 color)
 {
 	if(m_eRType != ANIMATION) //DONT FORGET SOME THINGS STILL NEED TO BE CONTEXT SWITCHED (BUFERS AND SHIT)
 	{
 		m_eRType = ANIMATION;
 	}
-
-	/////////// Updating delta time
-	xtime.Signal();
-	variant.x += (float)xtime.Delta()*.1f;
-	variant.y += (float)xtime.Delta()/1.0f;
-	variant.z += (float)xtime.Delta()/1.0f;
-	D3D11_MAPPED_SUBRESOURCE variantEdit;
-	m_pd3dcontext->Map(variantBuffer, 0, D3D11_MAP_WRITE_DISCARD, 0, &variantEdit);
-	memcpy(variantEdit.pData, &variant, sizeof(XMFLOAT4));
-	m_pd3dcontext->Unmap(variantBuffer, 0);
-	///////////////////////////////////
 
 	unsigned int offsetT = 0;
 	unsigned int sizeT = sizeof(tAnimVert);

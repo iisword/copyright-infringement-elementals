@@ -81,7 +81,7 @@ D3DObject * CObject::GetMesh() const
 	return m_cpMesh;
 }
 
-D2Dobject * CObject::GetTexture() const
+D2DObject * CObject::GetTexture() const
 {
 	return m_cpTexture;
 }
@@ -125,7 +125,7 @@ void CObject::CopyMesh(D3DObject * cpMesh)
 	*m_cpMesh = *cpMesh;
 }
 
-void CObject::SetTexture(D2Dobject * cpTexture)
+void CObject::SetTexture(D2DObject * cpTexture)
 {
 	m_cpTexture = cpTexture;
 }

@@ -21,7 +21,7 @@
 #include <DirectXMath.h>
 using namespace DirectX;
 class D3DObject;
-class D2Dobject;
+class D2DObject;
 class CRenderer;
 
 class CBaseColObj;
@@ -33,7 +33,7 @@ class CObject
 {
 private:
 	D3DObject * m_cpMesh;
-	D2Dobject * m_cpTexture;
+	D2DObject * m_cpTexture;
 #ifdef SERVER_BUILD
 	XMFLOAT3 m_tPosition;
 	XMFLOAT3 m_tForward;
@@ -58,14 +58,14 @@ public:
 
 	void SetMesh(D3DObject * cpMesh);
 	void CopyMesh(D3DObject * cpMesh);
-	void SetTexture(D2Dobject * cpTexture);
+	void SetTexture(D2DObject * cpTexture);
 	void SetID(OBJECT_ID eID);
 	void SetPosition(XMFLOAT3 & tNewPosition);
 	void SetForward(XMFLOAT3 & tNewForward);
 
 
 	D3DObject * GetMesh() const;
-	D2Dobject * GetTexture() const;
+	D2DObject * GetTexture() const;
 	OBJECT_ID GetID() const;
 	XMFLOAT3 GetPosition() const;
 	XMFLOAT3 GetForward() const;

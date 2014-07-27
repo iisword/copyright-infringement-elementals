@@ -123,7 +123,7 @@ void CGameState::Init(CRenderer* r, CText* font)
 	m_cpPlayer->SetMaxMana(100);
 	m_cpPlayer->SetMana(0);
 	m_cpPlayer->SetMesh(m_pRenderer->AddModel(m_cpPlayer->GetMesh(), "assets/CharacterPlaceholder3.obj"));
-	m_cpPlayer->SetTexture(new D2Dobject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f)); //CharacterPlaceholder3
+	m_cpPlayer->SetTexture(new D2DObject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f)); //CharacterPlaceholder3
 	m_pRenderer->AddD2D(m_cpPlayer->GetTexture());
 	m_pObjectManager->AddEntity(m_cpPlayer, m_cpPlayer->GetID());
 
@@ -151,27 +151,27 @@ void CGameState::Init(CRenderer* r, CText* font)
 	m_map->GetMapObject()->GetMesh()->GetCMatrix()->TranslateGlobalX(XMFLOAT3(50, 0, 0));
 	m_pObjectManager->AddEntity(m_map->GetMapObject(), m_map->GetMapObject()->GetID());
 
-	m_pSpells = new D2Dobject(L"assets/Hud/Abilities.dds", 512.0f, 128.0f);
+	m_pSpells = new D2DObject(L"assets/Hud/Abilities.dds", 512.0f, 128.0f);
 	m_pRenderer->AddD2D(m_pSpells);
-	m_pPlayer = new D2Dobject(L"assets/Hud/Health.dds", 1024.0f, 256.0f);
+	m_pPlayer = new D2DObject(L"assets/Hud/Health.dds", 1024.0f, 256.0f);
 	m_pRenderer->AddD2D(m_pPlayer);
-	m_pRadar = new D2Dobject(L"assets/Hud/Radar.dds", 256.0f, 256.0f);
+	m_pRadar = new D2DObject(L"assets/Hud/Radar.dds", 256.0f, 256.0f);
 	m_pRenderer->AddD2D(m_pRadar);
-	m_pReticle = new D2Dobject(L"assets/Hud/Reticle.dds", 64.0f, 64.0f);
+	m_pReticle = new D2DObject(L"assets/Hud/Reticle.dds", 64.0f, 64.0f);
 	m_pRenderer->AddD2D(m_pReticle);
-	m_pHealth = new D2Dobject(L"assets/Hud/HealthBar.dds", 512.0f, 32.0f);
+	m_pHealth = new D2DObject(L"assets/Hud/HealthBar.dds", 512.0f, 32.0f);
 	m_pRenderer->AddD2D(m_pHealth);
-	m_pMana = new D2Dobject(L"assets/Hud/ManaBar.dds", 512.0f, 32.0f);
+	m_pMana = new D2DObject(L"assets/Hud/ManaBar.dds", 512.0f, 32.0f);
 	m_pRenderer->AddD2D(m_pMana);
 
-	m_pSpellAOE = new D2Dobject(L"assets/Hud/Abilities_AOE.dds", 512.0f, 128.0f);
+	m_pSpellAOE = new D2DObject(L"assets/Hud/Abilities_AOE.dds", 512.0f, 128.0f);
 	m_pRenderer->AddD2D(m_pSpellAOE);
-	m_pSpellCone = new D2Dobject(L"assets/Hud/Abilities_Cone.dds", 512.0f, 128.0f);
+	m_pSpellCone = new D2DObject(L"assets/Hud/Abilities_Cone.dds", 512.0f, 128.0f);
 	m_pRenderer->AddD2D(m_pSpellCone);
-	m_pSpellBolt = new D2Dobject(L"assets/Hud/Abilities_Bolt.dds", 512.0f, 128.0f);
+	m_pSpellBolt = new D2DObject(L"assets/Hud/Abilities_Bolt.dds", 512.0f, 128.0f);
 	m_pRenderer->AddD2D(m_pSpellBolt);
 
-	m_pScoreboard = new D2Dobject(L"assets/Hud/Scoreboard.dds", 512.0f, 512.0f);
+	m_pScoreboard = new D2DObject(L"assets/Hud/Scoreboard.dds", 512.0f, 512.0f);
 	m_pRenderer->AddD2D(m_pScoreboard);
 
 	//BULLSHIT TEST CODE - DELETE
@@ -622,7 +622,7 @@ void CGameState::HandleIncomingData(RakNet::Packet * pcIncomingPacket)
 					pcNewPlayer->SetStats(&tPlayerStats[pcIncomingPacket->data[2 + nInternalOffset]]);
 					pcNewPlayer->Init();
 					pcNewPlayer->SetMesh(m_pRenderer->AddModel(pcNewPlayer->GetMesh(), "assets/CharacterPlaceholder3.obj"));
-					pcNewPlayer->SetTexture(new D2Dobject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f));
+					pcNewPlayer->SetTexture(new D2DObject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f));
 					m_pRenderer->AddD2D(pcNewPlayer->GetTexture());
 					if(pcNewPlayer->GetPlayerMode() == PLAYERMODE_ACTIVE)
 					{
@@ -1008,7 +1008,7 @@ CPlayer * CGameState::CreatePlayer()
 	pcReturnPlayer->SetStats(nullptr);
 	pcReturnPlayer->SetGameID(UCHAR_MAX);
 	pcReturnPlayer->SetMesh(m_pRenderer->AddModel(pcReturnPlayer->GetMesh(), "assets/CharacterPlaceholder3.obj"));
-	pcReturnPlayer->SetTexture(new D2Dobject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f));
+	pcReturnPlayer->SetTexture(new D2DObject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f));
 	m_pRenderer->AddD2D(pcReturnPlayer->GetTexture());
 	return pcReturnPlayer;
 }
@@ -1025,7 +1025,7 @@ CPlayer * CGameState::CreatePlayer(unsigned char chGameID, const char * szName, 
 	}
 
 	pcReturnPlayer->SetMesh(m_pRenderer->AddModel(pcReturnPlayer->GetMesh(), "assets/CharacterPlaceholder3.obj"));
-	pcReturnPlayer->SetTexture(new D2Dobject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f));
+	pcReturnPlayer->SetTexture(new D2DObject(L"assets/CharacterPlaceholder3.dds", 512.0f, 512.0f));
 	m_pRenderer->AddD2D(pcReturnPlayer->GetTexture());
 	return pcReturnPlayer;
 }

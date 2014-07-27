@@ -35,7 +35,7 @@ void CPauseState::Init(CRenderer* r, CText* font)
 {
 	m_pR = r;
 
-	m_pPauseBG = new D2Dobject(L"assets/BG/alphaBG.dds", 256.0f, 256.0f);
+	m_pPauseBG = new D2DObject(L"assets/BG/alphaBG.dds", 256.0f, 256.0f);
 	m_pR = r;
 	m_pR->AddD2D(m_pPauseBG);
 
@@ -48,7 +48,7 @@ void CPauseState::Update(float dTime)
 {
 	CInput::GetInstance()->Reset();
 
-	if(CInput::GetInstance()->IsW() && !(CInput::GetInstance()->GetPrevKeys()[0x57] & 0x80))
+	if(CInput::GetInstance()->IsKeyOnce('W'))
 	{
 		if(m_eCurrS > msReturn)
 		{
@@ -59,7 +59,7 @@ void CPauseState::Update(float dTime)
 			m_eCurrS = msExit;
 		}
 	}
-	else if(CInput::GetInstance()->IsS())
+	else if(CInput::GetInstance()->IsKeyOnce('S'))
 	{
 		if(m_eCurrS < msExit)
 		{
@@ -70,7 +70,7 @@ void CPauseState::Update(float dTime)
 			m_eCurrS = msReturn;
 		}
 	}
-	else if(CInput::GetInstance()->IsEnter())
+	else if(CInput::GetInstance()->IsKeyOnce(VK_RETURN))
 	{
 		if(m_eCurrS == msReturn)
 		{

@@ -1,7 +1,7 @@
 #include "D2Dobjects.h"
 
 
-D2Dobject::D2Dobject(const wchar_t * textLoc, float WIDTH, float HEIGHT)
+D2DObject::D2DObject(const wchar_t * textLoc, float WIDTH, float HEIGHT)
 {
 	dataBuffer = nullptr;
 	tex2D = nullptr;
@@ -62,7 +62,7 @@ D2Dobject::D2Dobject(const wchar_t * textLoc, float WIDTH, float HEIGHT)
 	size.SCREEN_COORDS.w = 200;
 }
 
-D2Dobject::D2Dobject(ID3D11Texture2D * texture, float WIDTH, float HEIGHT)
+D2DObject::D2DObject(ID3D11Texture2D * texture, float WIDTH, float HEIGHT)
 {
 	dataBuffer = nullptr;
 	tex2D = texture;
@@ -123,11 +123,11 @@ D2Dobject::D2Dobject(ID3D11Texture2D * texture, float WIDTH, float HEIGHT)
 	size.SCREEN_COORDS.w = 200;
 }
 
-D2Dobject::~D2Dobject(void)
+D2DObject::~D2DObject(void)
 {
 }
 
-void D2Dobject::ChangeCoords(XMFLOAT4 coords, XMFLOAT4 imgPart)
+void D2DObject::ChangeCoords(XMFLOAT4 coords, XMFLOAT4 imgPart)
 {
 	memcpy(&size.SCREEN_COORDS, &coords, sizeof(float4));
 	memcpy(&size.TOP_LEFT, &imgPart, sizeof(float4));

@@ -22,7 +22,7 @@ private:
 	int m_eCurrS;
 
 	CRenderer* m_pR;
-	D2Dobject* m_pPauseBG;
+	D2DObject* m_pPauseBG;
 
 	CText* m_pFont;
 

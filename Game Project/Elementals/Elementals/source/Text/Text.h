@@ -18,7 +18,7 @@
 class CText
 {
 private:
-	D2Dobject* fontObj;
+	D2DObject* fontObj;
 	CRenderer* pR;
 
 	struct fontInfo

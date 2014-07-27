@@ -20,12 +20,6 @@ public:
 	void Update(HWND hWnd, UINT message, LPARAM lParam );
 	char * GetKeys(){ return keys; };
 	BYTE * GetPrevKeys(){ return prevKeys; };
-	bool IsW(){return (keys[0x57] & 0x80 && !(prevKeys[0x57] & 0x80));};
-	bool IsA(){return (keys[0x41] & 0x80 && !(prevKeys[0x41] & 0x80));};
-	bool IsS(){return (keys[0x53] & 0x80 && !(prevKeys[0x53] & 0x80));};
-	bool IsD(){return (keys[0x44] & 0x80 && !(prevKeys[0x44] & 0x80));};
-	bool IsEnter(){return (keys[VK_RETURN] & 0x80 && !(prevKeys[VK_RETURN] & 0x80));};
-	bool IsEsc() { return (keys[VK_ESCAPE] & 0x80 && !(prevKeys[VK_ESCAPE] & 0x80));};
 	bool IsKey(int keyIn);
 	bool IsKeyOnce(int keyIn){ return (keys[keyIn] & 0x80 && !(prevKeys[keyIn] & 0x80));};
 	void SetMousePos(POINTS pt){ mouse = pt; };
@@ -44,7 +38,6 @@ public:
 	bool GetMousePressedL(){ return mousePressedL; };
 	bool GetMousePressedR(){ return mousePressedR; };
 	void Reset();
-	
 
 };
 

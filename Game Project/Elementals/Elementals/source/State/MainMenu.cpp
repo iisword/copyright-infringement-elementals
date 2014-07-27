@@ -27,7 +27,7 @@ CMainMenu::~CMainMenu(void)
 void CMainMenu::Init(CRenderer* r, CText* font)
 {
 	//Init and Load the stuff for the Main Menu
-	m_pMenuBG = new D2Dobject(L"assets/BG/tunnelBG.dds", 1920.0f, 1080.0f);
+	m_pMenuBG = new D2DObject(L"assets/BG/tunnelBG.dds", 1920.0f, 1080.0f);
 	m_pR = r;
 	m_pR->AddD2D(m_pMenuBG);
 
@@ -51,7 +51,7 @@ void CMainMenu::Update(float dTime)
 			m_eCurrS = msExit;
 		}
 	}
-	else if(CInput::GetInstance()->IsS())
+	else if(CInput::GetInstance()->IsKeyOnce('S'))
 	{
 		if(m_eCurrS < msExit)
 		{
@@ -62,7 +62,7 @@ void CMainMenu::Update(float dTime)
 			m_eCurrS = msJoin;
 		}
 	}
-	else if (CInput::GetInstance()->IsEnter() || (CInput::GetInstance()->GetMousePressedL() && CInput::GetInstance()->GetMouseX() > 300 ))
+	else if (CInput::GetInstance()->IsKeyOnce(VK_RETURN) || (CInput::GetInstance()->GetMousePressedL() && CInput::GetInstance()->GetMouseX() > 300 ))
 	{
 		if(m_eCurrS == msJoin)
 		{

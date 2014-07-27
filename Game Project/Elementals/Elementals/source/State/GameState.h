@@ -55,16 +55,16 @@ private:
 	TCharacterBaseStats tPlayerStats[4];
 	
 	// Player hud 2d objects
-	D2Dobject * m_pSpells;
-	D2Dobject * m_pPlayer;
-	D2Dobject * m_pRadar;
-	D2Dobject * m_pReticle;
-	D2Dobject * m_pHealth;
-	D2Dobject * m_pMana;
-	D2Dobject * m_pSpellCone;
-	D2Dobject * m_pSpellBolt;
-	D2Dobject * m_pSpellAOE;
-	D2Dobject * m_pScoreboard;
+	D2DObject * m_pSpells;
+	D2DObject * m_pPlayer;
+	D2DObject * m_pRadar;
+	D2DObject * m_pReticle;
+	D2DObject * m_pHealth;
+	D2DObject * m_pMana;
+	D2DObject * m_pSpellCone;
+	D2DObject * m_pSpellBolt;
+	D2DObject * m_pSpellAOE;
+	D2DObject * m_pScoreboard;
 
 	// Spell objects
 	D3DObject * m_pSpellSphere;

@@ -15,7 +15,7 @@ using namespace DirectX;
 struct V_IN   { XMFLOAT2 posL; XMFLOAT2 UV; };
 
 
-class D2Dobject
+class D2DObject
 {
 
 	V_IN texQuad[6];
@@ -35,9 +35,9 @@ class D2Dobject
 	DISPLAY_SIZE size;
 
 public:
-	D2Dobject(const wchar_t * location, float WIDTH, float  HEIGHT);
-	D2Dobject(ID3D11Texture2D * texture, float WIDTH, float  HEIGHT);
-	~D2Dobject(void);
+	D2DObject(const wchar_t * location, float WIDTH, float  HEIGHT);
+	D2DObject(ID3D11Texture2D * texture, float WIDTH, float  HEIGHT);
+	~D2DObject(void);
 
 	const wchar_t *			GetTextureLocation(){ return textureLoc; };
 	ID3D11SamplerState **	GetSampler(){ return &sampler; };

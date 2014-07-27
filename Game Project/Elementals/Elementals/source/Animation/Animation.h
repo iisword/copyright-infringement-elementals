@@ -34,7 +34,7 @@ public:
 	bool LoadAnimationBIN(const char* FilePath);
 
 	//D3DObject Bullshit3Dobj;
-	//D2Dobject* BullshitTexture;
+	//D2DObject* BullshitTexture;
 	//void BullshitFunctionTEST();
 
 

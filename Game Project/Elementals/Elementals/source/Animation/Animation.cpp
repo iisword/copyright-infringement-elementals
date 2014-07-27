@@ -245,7 +245,7 @@ const unsigned int CAnimation::GetNumJoints() const
 //	pDataObj.pSysMem = &Buffer[0];
 //
 //	Bullshit3Dobj.GetObjLoader()->SetALLFields(pDataObj,objDesc,Buffer,numtri*3);
-//	BullshitTexture = new D2Dobject(L"assets/PPG_3D_Player_Diffuse.dds",1024.0f,1024.0f);
+//	BullshitTexture = new D2DObject(L"assets/PPG_3D_Player_Diffuse.dds",1024.0f,1024.0f);
 //	m_pRenderer->AddD2D(BullshitTexture);
 //
 //	m_pRenderer->BullshitCreateBuffer(Bullshit3Dobj.GetObjLoader()->GetBufferDesc(), Bullshit3Dobj.GetObjLoader()->GetData(), Bullshit3Dobj.GetBuffer());

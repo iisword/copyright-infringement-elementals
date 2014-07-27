@@ -71,7 +71,7 @@ void CTestArea::Init(CRenderer* r, CText* font)
 	m_cpPlayer = new CPlayer(&tStats);
 	m_cpPlayer->Init();
 	m_cpPlayer->SetMesh(m_pRenderer->AddModel(m_cpPlayer->GetMesh(), "assets/CharacterPlaceholder3.obj"));
-	m_cpPlayer->SetTexture(new D2Dobject(L"assets/noise.dds", 512.0f, 512.0f));
+	m_cpPlayer->SetTexture(new D2DObject(L"assets/noise.dds", 512.0f, 512.0f));
 	CBaseColObj* tempP = new CCapsule();
 	((CCapsule*)tempP)->SetTop(XMFLOAT3(m_cpPlayer->GetPosition().x, m_cpPlayer->GetPosition().y+3.0f, m_cpPlayer->GetPosition().z));
 	((CCapsule*)tempP)->SetBottom(m_cpPlayer->GetPosition());
@@ -105,7 +105,7 @@ void CTestArea::Init(CRenderer* r, CText* font)
 
 	CObject * cylinder = new CObject;
 	cylinder->SetMesh(m_pRenderer->AddModel(cylinder->GetMesh(), "assets/Cylinder.obj"));
-	cylinder->SetTexture(new D2Dobject(L"assets/noise.dds", 512.0f, 512.0f));
+	cylinder->SetTexture(new D2DObject(L"assets/noise.dds", 512.0f, 512.0f));
 	cylinder->SetPShader(m_pRenderer->GetPShader("LavaPShaderNEW"));
 	m_pRenderer->AddD2D(cylinder->GetTexture());
 	m_pObjectManager->AddEntity(cylinder, cylinder->GetID());
@@ -276,7 +276,7 @@ void CTestArea::TestInput(void)
 	camera.Input(m_cpPlayer->GetMesh()->GetMatrix(), m_cpPlayer->GetRotation());
 	m_pRenderer->MoveCamera(camera.GetCameraMatrix());
 
-	if(m_pInput->IsEsc())
+	if(m_pInput->IsKeyOnce(VK_ESCAPE))
 	{
 		CBaseState* temp = new CMainMenu();
 		temp->Init(m_pRenderer, m_pFont);

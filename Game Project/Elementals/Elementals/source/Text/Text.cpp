@@ -37,7 +37,7 @@ bool CText::Init(CRenderer* r, const char* fontDisc)
 		std::wstring file = L"assets/Font/";
 		file += std::wstring(fileDDS.begin(), fileDDS.end());
 		
-		fontObj = new D2Dobject(file.c_str(), 256.0f, 256.0f);
+		fontObj = new D2DObject(file.c_str(), 256.0f, 256.0f);
 		pR->AddD2D(fontObj);
 
 		char buf[5];

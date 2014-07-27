@@ -20,6 +20,7 @@ void CGame::Run()
 	CEventSystem::GetInstance()->ProcessEvents();
 	stateManager.Update((float)CTimer::GetInstance()->Delta());
 	CInput::GetInstance()->Reset();
+	renderer.Update();
 }
 
 

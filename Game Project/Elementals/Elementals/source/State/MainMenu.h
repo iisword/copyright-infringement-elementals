@@ -21,7 +21,7 @@ class CMainMenu : public CBaseState
 private:
 	enum selection{ msJoin, msCredit, msTest, msExit};
 
-	D2Dobject* m_pMenuBG;
+	D2DObject* m_pMenuBG;
 	CRenderer* m_pR;
 
 	CText* m_pFont;

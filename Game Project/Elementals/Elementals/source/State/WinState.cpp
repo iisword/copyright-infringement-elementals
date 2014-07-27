@@ -25,13 +25,13 @@ void CWinState::Init(CRenderer* r, CText* font)
 
 void CWinState::Update(float dTime)
 {
-	if(CInput::GetInstance()->IsEnter())
+	if(CInput::GetInstance()->IsKeyOnce(VK_RETURN))
 	{
 		CBaseState* pNState = new CGameState();
 		pNState->Init(m_pRenderer, m_pFont);
 		CEventSystem::GetInstance()->SendEvent(CHANGE_STATE,HIGH, pNState);
 	}
-	else if(CInput::GetInstance()->IsEsc())
+	else if(CInput::GetInstance()->IsKeyOnce(VK_ESCAPE))
 	{
 		CBaseState* pNState = new CMainMenu();
 		pNState->Init(m_pRenderer, m_pFont);
