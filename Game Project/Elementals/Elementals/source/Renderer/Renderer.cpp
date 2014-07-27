@@ -237,6 +237,31 @@ void CRenderer::Init(HINSTANCE hinst, WNDPROC proc)
 	pixelShaders.push_back(CPixelShader(m_pd3dWaterPShader,		"WaterPShader"));
 //	pixelShaders.push_back(CPixelShader(m_pd3FlamePShader,		"FlamePShader"));
 
+	D3D11_BLEND_DESC blendDesc;
+	blendDesc.AlphaToCoverageEnable = TRUE;
+	D3D11_RENDER_TARGET_BLEND_DESC rtBlendDesc;
+//	rtBlendDesc.BlendEnable = TRUE;
+//	rtBlendDesc.BlendOp = D3D11_BLEND_OP_ADD;
+//	rtBlendDesc.BlendOpAlpha = D3D11_BLEND_OP_ADD;
+//	rtBlendDesc.DestBlend = D3D11_BLEND_SRC_COLOR;
+//	rtBlendDesc.DestBlendAlpha = D3D11_BLEND_SRC_COLOR;
+////	rtBlendDesc.RenderTargetWriteMask = 
+//	rtBlendDesc.SrcBlend = D3D11_BLEND_SRC_COLOR;
+//	rtBlendDesc.SrcBlendAlpha = D3D11_BLEND_SRC_COLOR;
+//	blendDesc.RenderTarget[0] = rtBlendDesc;
+	rtBlendDesc.BlendEnable = TRUE;
+    rtBlendDesc.SrcBlend = D3D11_BLEND_SRC_ALPHA;
+    rtBlendDesc.DestBlend = D3D11_BLEND_INV_SRC_ALPHA;
+	rtBlendDesc.BlendOp = D3D11_BLEND_OP_ADD;
+    rtBlendDesc.SrcBlendAlpha = D3D11_BLEND_ZERO;
+    rtBlendDesc.DestBlendAlpha = D3D11_BLEND_ZERO;
+    rtBlendDesc.BlendOpAlpha = D3D11_BLEND_OP_ADD;
+    rtBlendDesc.RenderTargetWriteMask = 0x0F;	
+	blendDesc.RenderTarget[0] = rtBlendDesc;
+	blendDesc.RenderTarget[1] = rtBlendDesc;
+	m_pd3ddevice->CreateBlendState(&blendDesc, &m_pd3dBlendState);
+
+
 	m_eRType = NONE;
 	AnimationInit();
 }
@@ -327,6 +352,7 @@ void CRenderer::PreRender()
 	m_pd3dcontext->ClearRenderTargetView(renderTargetTexture, x);
 	m_pd3dcontext->ClearDepthStencilView(m_pd3dstencilView, D3D11_CLEAR_DEPTH, 1, 0);
 	m_pd3dcontext->OMSetRenderTargets(1, &renderTargetTexture, m_pd3dstencilView);	
+//	m_pd3dcontext->OMSetBlendState(m_pd3dBlendState, NULL, 0xFFFFFF);
 }
 
 /*****************************************************************
@@ -446,6 +472,7 @@ void CRenderer::Render3D(D3DObject * mesh, D2DObject * texture, XMFLOAT4 color)
 
 void CRenderer::PostRender()
 {
+//	m_pd3dcontext->OMSetBlendState(nullptr, NULL, NULL);
 	m_pd3dcontext->GenerateMips(RTTshaderSRV);
 	FLOAT clearScreen[] = {0, 0, 0, 1};
 	m_pd3dcontext->ClearRenderTargetView(m_pd3drenderTarget, clearScreen);

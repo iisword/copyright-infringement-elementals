@@ -116,6 +116,8 @@ class CRenderer
 	unsigned int m_nNumLights;
 	TLIGHT light;
 	ID3D11Buffer * lightBuffer;
+
+	ID3D11BlendState * m_pd3dBlendState;
 	
 	void AnimationInit();
 	D2DObject* BullshiTexture;
